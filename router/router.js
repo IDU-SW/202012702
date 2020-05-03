@@ -7,6 +7,9 @@ router.get('/info/:id',Detail);
 router.post('/info', add);
 router.put('/info', update);
 router.delete('/info/:id', Delete);
+router.get('/person',function(req,res){
+    res.render('index.html')
+})
 
 
 module.exports = router;

@@ -1,0 +1,39 @@
+<!doctype html>
+<html>
+<head>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+</head>
+
+<body>
+<h1>person</h1>
+<ul id="person">
+</ul>
+<div>
+   <button onclick="getPerson()">Get 요청</button>
+</div>
+<script>
+   let name = [];
+   let address = [];
+    function getPerson() {
+       $.ajax({
+          url : '/info',
+          type : 'get',
+          success : function(data) {
+            let info = data.data
+            for(let i in info) {
+               name.push(info[i].name);
+               address.push(info[i].address)
+            }
+            let temp = '';
+            for(let i in name) {
+               temp += '<div>이름' + name[i] + '주소' + address[i] + '</div>';
+            }
+            $('#person').append(temp)
+            }
+       });
+
+    }
+
+ </script>
+</body>
+</html>
